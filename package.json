@@ -41,9 +41,30 @@
     "@types/react": "^16.9.36",
     "@typescript-eslint/eslint-plugin": "^3.2.0",
     "@typescript-eslint/parser": "^3.2.0",
+    "chai": "^4.2.0",
     "eslint-config-prettier": "^6.11.0",
     "eslint-config-react": "^1.1.7",
     "eslint-plugin-prettier": "^3.1.3",
+    "nyc": "^15.1.0",
     "prettier": "^2.0.5"
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "src/**/*.{js,jsx,ts,tsx}"
+    ],
+    "coveragePathIgnorePatterns": [
+      "/node_modules/",
+      "/src/react-app-env.d.ts",
+      "/src/index.tsx",
+      "/src/serviceWorker.ts"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "branches": 90,
+        "functions": 90,
+        "lines": 90,
+        "statements": 90
+      }
+    }
   }
 }

@@ -10,8 +10,17 @@ jobs:
       - node/with-cache:
           steps:
             - run: npm install
-            - run: npm run lint
-            - run: npm test
+            - run:
+                name: Setup Code Climate test-reporter
+                command: |
+                  curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+                  chmod +x ./cc-test-reporter
+            - run:
+                name: Run Test and Coverage
+                command: |
+                  ./cc-test-reporter before-build
+                  npm test -- --coverage
+                  ./cc-test-reporter after-build --exit-code $?
 workflows:
     build-and-test:
       jobs:
