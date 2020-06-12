@@ -21,7 +21,27 @@ jobs:
                   ./cc-test-reporter before-build
                   npm test -- --coverage
                   ./cc-test-reporter after-build --exit-code $?
+  deploy:
+    executor:
+      name: node/default
+    steps:
+      - checkout
+      - node/with-cache:
+          steps:
+            - run: npm install
+            - run: npm run build
+            - run:
+                name: Deploy Master to Firebase
+                command: ./node_modules/.bin/firebase deploy --token=$FIREBASE_DEPLOY_TOKEN
 workflows:
     build-and-test:
       jobs:
         - build-and-test
+        - hold: # Manual approval in the CircleCI web application
+            type: approval
+            requires:
+              - build-and-test
+        - deploy:
+            requires:
+              - hold
+        

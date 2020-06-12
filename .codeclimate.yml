@@ -2,6 +2,6 @@ version: "2"
 plugins: 
   eslint:
     enabled: true
-    channel: "eslint-6"g
+    channel: "eslint-6"
 exclude_patterns:
 - "src/serviceWorker.ts"
