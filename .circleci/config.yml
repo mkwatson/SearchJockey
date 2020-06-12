@@ -39,9 +39,13 @@ workflows:
         - build-and-test
         - hold: # Manual approval in the CircleCI web application
             type: approval
+            filters:
+              branches:
+                only: master
             requires:
               - build-and-test
         - deploy:
-            requires:
-              - hold
+            filters:
+              branches:
+                only: master
         

@@ -45,6 +45,10 @@ Analyze source code to flag programming errors, bugs, stylistic errors, and susp
 
 You can fix many errors automatically using `npm run lint:fix`
 
+#### `npm test -- --coverage --watchAll=false`
+
+Test coverage
+
 #### `codeclimate validate-config`
 
 Check `.codeclimate.yml` (if you've made changes).
