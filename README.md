@@ -4,7 +4,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 This project uses [CircleCi](https://app.circleci.com/pipelines/github/mkwatson/SearchJockey) and [CodeClimate](https://codeclimate.com/github/mkwatson/SearchJockey) for CI/CD.
 
-The project is hosted (currently only development/staging) at [https://searchjockey.web.app](https://searchjockey.web.app)
+The project is hosted (currently only development/staging) at [https://app.searchjockey.com/](https://app.searchjockey.com/)
 
 ## Available Scripts
 

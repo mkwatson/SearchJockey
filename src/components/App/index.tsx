@@ -4,15 +4,13 @@ import React, {
   useContext,
   useEffect,
 } from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { HashRouter as Router, Route } from 'react-router-dom';
 
 import Navigation from '../Navigation';
-import LandingPage from '../Landing';
 import SignUpPage from '../SignUp';
 import SignInPage from '../SignIn';
-import PasswordForgetPage from '../PasswordForget';
 import HomePage from '../Home';
-import AccountPage from '../Account';
+import Admin from '../Admin';
 
 import * as ROUTES from '../../constants/routes';
 import { FirebaseContext } from '../Firebase';
@@ -38,12 +36,10 @@ const App: FunctionComponent = () => {
 
           <hr />
 
-          <Route exact path={ROUTES.LANDING} component={LandingPage} />
+          <PrivateRoute exact path={ROUTES.ADMIN} component={Admin} />
           <Route path={ROUTES.SIGN_UP} component={SignUpPage} />
           <Route path={ROUTES.SIGN_IN} component={SignInPage} />
-          <Route path={ROUTES.PASSWORD_FORGET} component={PasswordForgetPage} />
           <PrivateRoute path={ROUTES.HOME} component={HomePage} />
-          <PrivateRoute path={ROUTES.ACCOUNT} component={AccountPage} />
         </div>
       </Router>
     </AuthUserContext.Provider>
