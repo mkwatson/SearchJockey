@@ -2,6 +2,7 @@ import React, { useCallback, useContext } from 'react';
 import Firebase, { FirebaseContext } from '../../Firebase';
 
 import OauthPopup from 'react-oauth-popup';
+import SlackAuthResponse from './Types';
 
 const CLIENT_ID = process.env.REACT_APP_SLACK_CLIENT_ID;
 const CLIENT_SECRET = process.env.REACT_APP_SLACK_CLIENT_SECRET;
@@ -10,33 +11,15 @@ const callbackURL = `${window.location.protocol}//${window.location.hostname}${
   window.location.port ? ':' + window.location.port : ''
 }/`;
 
-const getUserIntegrationDetails = async (key: string, firebase: Firebase) =>
-  firebase.db
-    .ref(key)
-    .once('value')
-    .then((userData) => userData.val());
-
-// Todo: more specific type for `token`
 const persistSlackToken = (
-  token: Record<string, unknown>,
+  token: SlackAuthResponse,
   firebase: Firebase | null
 ) => {
   const key = 'users/' + firebase?.auth.currentUser?.uid;
 
-  firebase?.db
-    .ref(key)
-    .update({
-      slack: token,
-    })
-    .then(
-      () =>
-        getUserIntegrationDetails(key, firebase).then((userData) =>
-          console.log(userData)
-        ),
-      (err) => {
-        throw new Error(err);
-      }
-    );
+  firebase?.db.ref(key).update({
+    slack: token,
+  });
 };
 
 const onCodeBase = (code: string, firebase: Firebase | null) => {
@@ -53,7 +36,7 @@ const onCodeBase = (code: string, firebase: Firebase | null) => {
       }
 
       response.json().then(
-        (token) => persistSlackToken(token, firebase),
+        (token: SlackAuthResponse) => persistSlackToken(token, firebase),
         (err) => {
           throw new Error(err);
         }

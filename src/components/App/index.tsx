@@ -9,7 +9,7 @@ import { HashRouter as Router, Route } from 'react-router-dom';
 import Navigation from '../Navigation';
 import SignUpPage from '../SignUp';
 import SignInPage from '../SignIn';
-import HomePage from '../Home';
+import HomePage from '../Search';
 import Admin from '../Admin';
 
 import * as ROUTES from '../../constants/routes';
@@ -39,7 +39,7 @@ const App: FunctionComponent = () => {
           <PrivateRoute exact path={ROUTES.ADMIN} component={Admin} />
           <Route path={ROUTES.SIGN_UP} component={SignUpPage} />
           <Route path={ROUTES.SIGN_IN} component={SignInPage} />
-          <PrivateRoute path={ROUTES.HOME} component={HomePage} />
+          <PrivateRoute path={ROUTES.SEARCH} component={HomePage} />
         </div>
       </Router>
     </AuthUserContext.Provider>

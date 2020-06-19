@@ -35,8 +35,11 @@ const SignUpForm: React.FunctionComponent = () => {
       firebase
         ?.doCreateUserWithEmailAndPassword(email, passwordOne)
         .then(() => {
+          // eslint-disable-next-line
+          // @ts-ignore
+          window.heap.identify(firebase.auth.currentUser?.uid);
           setValue([{ email: '' }, { passwordOne: '' }, { passwordTwo: '' }]);
-          history.push(ROUTES.HOME);
+          history.push(ROUTES.SEARCH);
         })
         .catch((error) => {
           setError(error);

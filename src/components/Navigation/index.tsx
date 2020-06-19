@@ -19,7 +19,7 @@ const NavigationAuth: FunctionComponent = () => (
   <div>
     <ul>
       <li>
-        <Link to={ROUTES.HOME}>Home</Link>
+        <Link to={ROUTES.SEARCH}>Search</Link>
       </li>
       <li>
         <Link to={ROUTES.ADMIN}>Integrations</Link>

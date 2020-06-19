@@ -36,8 +36,11 @@ const SignInForm: React.FunctionComponent = () => {
       firebase
         ?.doSignInWithEmailAndPassword(email, password)
         .then(() => {
+          // eslint-disable-next-line
+          // @ts-ignore
+          window.heap.identify(firebase.auth.currentUser?.uid);
           setValue([{ email: '' }, { password: '' }]);
-          history.push(ROUTES.HOME);
+          history.push(ROUTES.SEARCH);
         })
         .catch((error) => {
           setError(error);
