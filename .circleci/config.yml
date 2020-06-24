@@ -19,7 +19,7 @@ jobs:
                 name: Run Test and Coverage
                 command: |
                   ./cc-test-reporter before-build
-                  npm test -- --coverage
+                  npm test -- --coverage --passWithNoTests
                   ./cc-test-reporter after-build --exit-code $?
   deploy:
     executor:
@@ -39,9 +39,13 @@ workflows:
         - build-and-test
         - hold: # Manual approval in the CircleCI web application
             type: approval
+            filters:
+              branches:
+                only: master
             requires:
               - build-and-test
         - deploy:
-            requires:
-              - hold
+            filters:
+              branches:
+                only: master
         

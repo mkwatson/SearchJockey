@@ -4,7 +4,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 This project uses [CircleCi](https://app.circleci.com/pipelines/github/mkwatson/SearchJockey) and [CodeClimate](https://codeclimate.com/github/mkwatson/SearchJockey) for CI/CD.
 
-The project is hosted (currently only development/staging) at [https://searchjockey.web.app](https://searchjockey.web.app)
+The project is hosted (currently only development/staging) at [https://app.searchjockey.com/](https://app.searchjockey.com/)
 
 ## Available Scripts
 
@@ -44,6 +44,10 @@ These all run as part of the CD pipeline anyway, so it's only going to save you 
 Analyze source code to flag programming errors, bugs, stylistic errors, and suspicious constructs.
 
 You can fix many errors automatically using `npm run lint:fix`
+
+#### `npm test -- --coverage --watchAll=false`
+
+Test coverage
 
 #### `codeclimate validate-config`
 
